@@ -204,6 +204,7 @@ public class ItemSelectionGUI {
     }
     
     public void open(Player player) {
+        plugin.getLogger().info("GUI Debug - Opening ItemSelectionGUI for " + player.getName());
         plugin.setOpenGUI(player.getUniqueId(), this);
         player.openInventory(inventory);
         if (plugin.getConfig().getBoolean("gui.sounds", true)) {
