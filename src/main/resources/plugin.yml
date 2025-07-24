@@ -1,0 +1,6 @@
+name: FractureGens
+version: 1.0.0
+main: com.speedier.fracturegens.FractureGens
+api-version: 1.21
+author: SpeedierWings96
+description: A simple Spigot plugin for Minecraft 1.21.3
