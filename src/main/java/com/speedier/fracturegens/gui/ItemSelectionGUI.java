@@ -204,6 +204,7 @@ public class ItemSelectionGUI {
     }
     
     public void open(Player player) {
+        plugin.setOpenGUI(player.getUniqueId(), this);
         player.openInventory(inventory);
         if (plugin.getConfig().getBoolean("gui.sounds", true)) {
             player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1.0f, 1.0f);

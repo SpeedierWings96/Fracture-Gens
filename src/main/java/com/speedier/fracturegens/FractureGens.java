@@ -7,13 +7,16 @@ import com.speedier.fracturegens.managers.GeneratorManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
 public class FractureGens extends JavaPlugin {
     private GeneratorManager generatorManager;
     private Set<UUID> playersInCreationMode = new HashSet<>();
+    private Map<UUID, Object> openGUIs = new HashMap<>();
     
     @Override
     public void onEnable() {
@@ -76,5 +79,17 @@ public class FractureGens extends JavaPlugin {
         boolean newState = !isPlayerInCreationMode(playerId);
         setPlayerCreationMode(playerId, newState);
         return newState;
+    }
+    
+    public void setOpenGUI(UUID playerId, Object gui) {
+        openGUIs.put(playerId, gui);
+    }
+    
+    public Object getOpenGUI(UUID playerId) {
+        return openGUIs.get(playerId);
+    }
+    
+    public void removeOpenGUI(UUID playerId) {
+        openGUIs.remove(playerId);
     }
 }
