@@ -179,18 +179,27 @@ public class GUIListener implements Listener {
             return;
         }
         
+        Player player = (Player) event.getPlayer();
         String title = ChatColor.stripColor(event.getView().getTitle());
         if (title.contains("Generator Configuration") || title.contains("Select Items")) {
-            Player player = (Player) event.getPlayer();
+            plugin.removeOpenGUI(player.getUniqueId());
             playSound(player, Sound.BLOCK_CHEST_CLOSE);
         }
     }
     
     private GeneratorGUI findGeneratorGUI(Player player) {
+        Object gui = plugin.getOpenGUI(player.getUniqueId());
+        if (gui instanceof GeneratorGUI) {
+            return (GeneratorGUI) gui;
+        }
         return null;
     }
     
     private ItemSelectionGUI findItemSelectionGUI(Player player) {
+        Object gui = plugin.getOpenGUI(player.getUniqueId());
+        if (gui instanceof ItemSelectionGUI) {
+            return (ItemSelectionGUI) gui;
+        }
         return null;
     }
     
