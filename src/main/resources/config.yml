@@ -1,0 +1,63 @@
+# FractureGens Configuration File
+# Advanced generator plugin for Minecraft 1.21.3
+
+# Performance Settings
+performance:
+  # Maximum number of generators per chunk
+  max-generators-per-chunk: 10
+  # Maximum number of generators per player
+  max-generators-per-player: 50
+  # Tick interval for generator processing (in ticks, 20 = 1 second)
+  generator-tick-interval: 20
+  # Maximum items that can be spawned per tick across all generators
+  max-items-per-tick: 100
+  # Enable async processing for better performance
+  async-processing: true
+
+# Generator Settings
+generators:
+  # Default spawn rate (items per minute)
+  default-spawn-rate: 60
+  # Maximum spawn rate allowed
+  max-spawn-rate: 300
+  # Default items to spawn
+  default-items:
+    - COBBLESTONE
+  # Maximum different item types per generator
+  max-item-types: 10
+  # Default spawn direction (TOP, SIDES, RANDOM)
+  default-direction: TOP
+  # Maximum stack size for spawned items
+  max-stack-size: 64
+
+# GUI Settings
+gui:
+  # GUI update interval (in ticks)
+  update-interval: 20
+  # Enable sound effects
+  sounds: true
+  # GUI titles
+  titles:
+    main: "&6&lGenerator Configuration"
+    item-selection: "&6&lSelect Items"
+    settings: "&6&lGenerator Settings"
+
+# Storage Settings
+storage:
+  # Auto-save interval (in minutes)
+  auto-save-interval: 5
+  # Enable backup system
+  enable-backups: true
+  # Maximum number of backups to keep
+  max-backups: 5
+
+# Messages
+messages:
+  prefix: "&8[&6FractureGens&8]&r "
+  no-permission: "&cYou don't have permission to do that!"
+  generator-created: "&aGenerator created successfully!"
+  generator-removed: "&aGenerator removed successfully!"
+  generator-configured: "&aGenerator configuration updated!"
+  max-generators-reached: "&cYou have reached the maximum number of generators!"
+  invalid-block: "&cThis block cannot be used as a generator!"
+  config-reloaded: "&aConfiguration reloaded successfully!"

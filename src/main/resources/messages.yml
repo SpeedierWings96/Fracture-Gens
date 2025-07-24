@@ -1,0 +1,59 @@
+# FractureGens Messages Configuration
+# Use & for color codes
+
+prefix: "&8[&6FractureGens&8]&r "
+
+# General Messages
+no-permission: "&cYou don't have permission to do that!"
+config-reloaded: "&aConfiguration reloaded successfully!"
+plugin-info: "&6FractureGens &7v{version} by &6{author}"
+
+# Generator Messages
+generator-created: "&aGenerator created successfully!"
+generator-removed: "&aGenerator removed successfully!"
+generator-configured: "&aGenerator configuration updated!"
+generator-enabled: "&aGenerator enabled!"
+generator-disabled: "&cGenerator disabled!"
+
+# Error Messages
+max-generators-reached: "&cYou have reached the maximum number of generators!"
+max-generators-per-chunk: "&cThis chunk has reached the maximum number of generators!"
+invalid-block: "&cThis block cannot be used as a generator!"
+generator-not-found: "&cNo generator found at this location!"
+not-your-generator: "&cYou can only modify your own generators!"
+
+# GUI Messages
+gui-item-added: "&aItem added to generator!"
+gui-item-removed: "&cItem removed from generator!"
+gui-rate-changed: "&eSpawn rate changed to &f{rate} &eitems per minute!"
+gui-direction-changed: "&eSpawn direction changed to &f{direction}!"
+gui-confirm-removal: "&cShift-click to confirm generator removal!"
+
+# Command Messages
+command-help-header: "&6&lFractureGens Commands:"
+command-help-help: "&e/fracturegens help &7- Show command help"
+command-help-list: "&e/fracturegens list &7- List your generators"
+command-help-reload: "&e/fracturegens reload &7- Reload configuration"
+command-help-stats: "&e/fracturegens stats &7- Show plugin statistics"
+command-help-usage: "&6&lHow to use:"
+command-help-create: "&7• Shift + Right-click any solid block to create a generator"
+command-help-configure: "&7• Shift + Right-click an existing generator to configure it"
+command-help-remove: "&7• Break a generator block to remove it"
+
+command-list-empty: "&7You don't have any generators."
+command-list-header: "&6Your Generators ({count}):"
+command-list-entry: "&7{index}. &f{location} {status}"
+
+command-stats-header: "&6FractureGens Statistics:"
+command-stats-total: "&7Total Generators: &f{total}"
+command-stats-enabled: "&7Enabled Generators: &f{enabled}"
+command-stats-disabled: "&7Disabled Generators: &f{disabled}"
+command-stats-performance: "&7Server TPS: &f{tps}"
+command-stats-memory: "&7Memory Usage: &f{memory}%"
+
+command-unknown: "&cUnknown command. Use &f/{label} help &cfor help."
+command-player-only: "&cThis command can only be used by players!"
+
+# Status Messages
+status-enabled: "&aEnabled"
+status-disabled: "&cDisabled"

@@ -3,4 +3,32 @@ version: 1.0.0
 main: com.speedier.fracturegens.FractureGens
 api-version: 1.21
 author: SpeedierWings96
-description: A simple Spigot plugin for Minecraft 1.21.3
+description: Advanced generator plugin for Minecraft 1.21.3 with sleek GUI and high performance
+
+commands:
+  fracturegens:
+    description: Main command for FractureGens plugin
+    aliases: [fgens, fg]
+    usage: /<command> [help|reload|list]
+
+permissions:
+  fracturegens.*:
+    description: Gives access to all FractureGens features
+    default: op
+    children:
+      fracturegens.create: true
+      fracturegens.configure: true
+      fracturegens.remove: true
+      fracturegens.admin: true
+  fracturegens.create:
+    description: Allows creating new generators
+    default: op
+  fracturegens.configure:
+    description: Allows configuring existing generators
+    default: op
+  fracturegens.remove:
+    description: Allows removing generators
+    default: op
+  fracturegens.admin:
+    description: Allows administrative functions like reload
+    default: op
