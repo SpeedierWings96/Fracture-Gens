@@ -33,10 +33,16 @@ public class GUIListener implements Listener {
         Player player = (Player) event.getWhoClicked();
         String title = ChatColor.stripColor(event.getView().getTitle());
         
+        plugin.getLogger().info("GUI Click Debug - Player: " + player.getName() + ", Title: '" + title + "'");
+        
         if (title.contains("Generator Configuration")) {
+            plugin.getLogger().info("GUI Click Debug - Handling Generator GUI click");
             handleGeneratorGUIClick(event, player);
         } else if (title.contains("Select Items")) {
+            plugin.getLogger().info("GUI Click Debug - Handling Item Selection GUI click");
             handleItemSelectionGUIClick(event, player);
+        } else {
+            plugin.getLogger().info("GUI Click Debug - No matching GUI title found");
         }
     }
     
@@ -189,6 +195,7 @@ public class GUIListener implements Listener {
     
     private GeneratorGUI findGeneratorGUI(Player player) {
         Object gui = plugin.getOpenGUI(player.getUniqueId());
+        plugin.getLogger().info("GUI Debug - findGeneratorGUI for " + player.getName() + ", found: " + (gui != null ? gui.getClass().getSimpleName() : "null"));
         if (gui instanceof GeneratorGUI) {
             return (GeneratorGUI) gui;
         }
@@ -197,6 +204,7 @@ public class GUIListener implements Listener {
     
     private ItemSelectionGUI findItemSelectionGUI(Player player) {
         Object gui = plugin.getOpenGUI(player.getUniqueId());
+        plugin.getLogger().info("GUI Debug - findItemSelectionGUI for " + player.getName() + ", found: " + (gui != null ? gui.getClass().getSimpleName() : "null"));
         if (gui instanceof ItemSelectionGUI) {
             return (ItemSelectionGUI) gui;
         }
