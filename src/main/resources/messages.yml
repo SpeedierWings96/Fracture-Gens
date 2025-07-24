@@ -15,6 +15,11 @@ generator-configured: "&aGenerator configuration updated!"
 generator-enabled: "&aGenerator enabled!"
 generator-disabled: "&cGenerator disabled!"
 
+# Creation Mode Messages
+creation-mode-enabled: "&aCreation mode enabled! Shift+right-click blocks to create generators."
+creation-mode-disabled: "&cCreation mode disabled."
+not-in-creation-mode: "&cYou must enable creation mode first! Use &f/fracturegens create &cto toggle creation mode."
+
 # Error Messages
 max-generators-reached: "&cYou have reached the maximum number of generators!"
 max-generators-per-chunk: "&cThis chunk has reached the maximum number of generators!"

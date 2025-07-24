@@ -65,6 +65,12 @@ public class BlockInteractionListener implements Listener {
                 return;
             }
             
+            if (!plugin.isPlayerInCreationMode(player.getUniqueId())) {
+                sendMessage(player, plugin.getConfig().getString("messages.not-in-creation-mode", 
+                    "&cYou must enable creation mode first! Use &f/fracturegens create &cto toggle creation mode."));
+                return;
+            }
+            
             if (generatorManager.createGenerator(block.getLocation(), player.getUniqueId())) {
                 event.setCancelled(true);
                 sendMessage(player, plugin.getConfig().getString("messages.generator-created", 
