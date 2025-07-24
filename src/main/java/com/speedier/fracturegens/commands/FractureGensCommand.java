@@ -30,9 +30,37 @@ public class FractureGensCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         
+        Player player = null;
+        if (sender instanceof Player) {
+            player = (Player) sender;
+        }
+        
         switch (args[0].toLowerCase()) {
             case "help":
                 sendHelp(sender);
+                break;
+                
+            case "create":
+                if (player == null) {
+                    sender.sendMessage("This command can only be used by players!");
+                    return true;
+                }
+                
+                if (!sender.hasPermission("fracturegens.create")) {
+                    sendMessage(sender, plugin.getConfig().getString("messages.no-permission", 
+                        "&cYou don't have permission to do that!"));
+                    return true;
+                }
+                
+                boolean newState = plugin.togglePlayerCreationMode(player.getUniqueId());
+                
+                if (newState) {
+                    sendMessage(sender, plugin.getConfig().getString("messages.creation-mode-enabled", 
+                        "&aCreation mode enabled! Shift+right-click blocks to create generators."));
+                } else {
+                    sendMessage(sender, plugin.getConfig().getString("messages.creation-mode-disabled", 
+                        "&cCreation mode disabled."));
+                }
                 break;
                 
             case "reload":
@@ -49,12 +77,11 @@ public class FractureGensCommand implements CommandExecutor, TabCompleter {
                 break;
                 
             case "list":
-                if (!(sender instanceof Player)) {
+                if (player == null) {
                     sender.sendMessage("This command can only be used by players!");
                     return true;
                 }
                 
-                Player player = (Player) sender;
                 List<Generator> playerGenerators = generatorManager.getGeneratorsByOwner(player.getUniqueId());
                 
                 if (playerGenerators.isEmpty()) {
@@ -102,7 +129,7 @@ public class FractureGensCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
             List<String> completions = new ArrayList<>();
-            List<String> commands = Arrays.asList("help", "reload", "list", "stats");
+            List<String> commands = Arrays.asList("help", "create", "reload", "list", "stats");
             
             for (String cmd : commands) {
                 if (cmd.toLowerCase().startsWith(args[0].toLowerCase())) {
@@ -125,6 +152,7 @@ public class FractureGensCommand implements CommandExecutor, TabCompleter {
     private void sendHelp(CommandSender sender) {
         sendMessage(sender, "&6&lFractureGens Commands:");
         sendMessage(sender, "&e/fracturegens help &7- Show this help message");
+        sendMessage(sender, "&e/fracturegens create &7- Toggle creation mode");
         sendMessage(sender, "&e/fracturegens list &7- List your generators");
         
         if (sender.hasPermission("fracturegens.admin")) {
@@ -134,7 +162,8 @@ public class FractureGensCommand implements CommandExecutor, TabCompleter {
         
         sendMessage(sender, "");
         sendMessage(sender, "&6&lHow to use:");
-        sendMessage(sender, "&7• Shift + Right-click any solid block to create a generator");
+        sendMessage(sender, "&7• Use &f/fracturegens create &7to enable creation mode");
+        sendMessage(sender, "&7• Shift + Right-click blocks to create generators (creation mode required)");
         sendMessage(sender, "&7• Shift + Right-click an existing generator to configure it");
         sendMessage(sender, "&7• Break a generator block to remove it");
     }
